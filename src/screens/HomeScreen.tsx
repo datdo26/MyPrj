@@ -1,13 +1,4 @@
-import {
-  Dimensions,
-  Image,
-  Platform,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  View,
-} from 'react-native';
+import {Dimensions, Image, ScrollView, StatusBar, View} from 'react-native';
 // @ts-ignore
 import React from 'react';
 import Headers from '../component/Headers';
