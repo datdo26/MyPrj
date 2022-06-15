@@ -2,6 +2,7 @@ import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
 import React from 'react';
 import HomeScreen from './src/screens/HomeScreen';
 import AsynStr from './src/screens/AsynStr';
+import UserDetailScreen from './src/screens/UserDetailScreen';
 
 const App = () => {
   // function applyDiscount(price, discount: number = 0.05): number {
@@ -46,7 +47,8 @@ const App = () => {
 
   return (
     // <HomeScreen />
-    <AsynStr />
+    // <AsynStr />
+    <UserDetailScreen />
   );
 };
 
