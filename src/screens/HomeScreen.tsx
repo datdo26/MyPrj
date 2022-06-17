@@ -1,12 +1,17 @@
-import {Dimensions, Image, ScrollView, StatusBar, View} from 'react-native';
+import { Dimensions, Image, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
 // @ts-ignore
 import React from 'react';
 import Headers from '../component/Headers';
 import styled from 'styled-components/native';
+import { IMG_BANNER, IMG_OVAL } from "../assets";
+import { useNavigation } from "@react-navigation/native";
 
 const width = Dimensions.get('window').width;
 
 const HomeScreen = () => {
+
+  const navigation = useNavigation<any>()
+
   return (
     <Container>
       <StatusBar hidden={false} />
@@ -15,7 +20,7 @@ const HomeScreen = () => {
         <WrapSection>
           <WrapContent>
             <ContentHeader>
-              <Image source={require('../assets/Oval.png')} />
+              <Image source={IMG_OVAL} />
               <MainContentHeader>
                 <Title>Nghị quyết TW</Title>
                 <Date>21-08-2019</Date>
@@ -23,7 +28,7 @@ const HomeScreen = () => {
             </ContentHeader>
             <ContentSection>
               <BannerSection>
-                <Banner source={require('../assets/Banner.png')} />
+                <Banner source={IMG_BANNER} />
               </BannerSection>
               <MainContent>
                 <View>
@@ -42,7 +47,7 @@ const HomeScreen = () => {
 
           <WrapContent>
             <ContentHeader>
-              <Image source={require('../assets/Oval.png')} />
+              <Image source={IMG_OVAL} />
               <MainContentHeader>
                 <Title>Điều lệ Đảng</Title>
                 <Date>21-08-2019</Date>
@@ -50,7 +55,7 @@ const HomeScreen = () => {
             </ContentHeader>
             <ContentSection>
               <BannerSection>
-                <Banner source={require('../assets/Banner.png')} />
+                <Banner source={IMG_BANNER} />
               </BannerSection>
               <MainContent>
                 <ContentTitle>
@@ -64,7 +69,20 @@ const HomeScreen = () => {
               </MainContent>
             </ContentSection>
           </WrapContent>
+
         </WrapSection>
+        {/*<View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal:32}} >*/}
+        {/*<TouchableOpacity style={{width: 100, height: 60, backgroundColor:'#0068FF', alignItems:'center', justifyContent:'center', borderRadius: 15}} onPress={()=> navigation.navigate('UserDetail')} >*/}
+        {/*  <Text>*/}
+        {/*    Go to UserDetail*/}
+        {/*  </Text>*/}
+        {/*</TouchableOpacity>*/}
+        {/*<TouchableOpacity style={{width: 100, height: 60, backgroundColor:'#0068FF', alignItems:'center', justifyContent:'center', borderRadius: 15}} onPress={()=> navigation.navigate('Report')} >*/}
+        {/*  <Text>*/}
+        {/*    Go to Report*/}
+        {/*  </Text>*/}
+        {/*</TouchableOpacity>*/}
+        {/*</View>*/}
       </ScrollView>
     </Container>
   );

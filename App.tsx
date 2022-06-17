@@ -3,6 +3,8 @@ import React from 'react';
 import HomeScreen from './src/screens/HomeScreen';
 import AsynStr from './src/screens/AsynStr';
 import UserDetailScreen from './src/screens/UserDetailScreen';
+import ReportScreen from './src/screens/ReportScreen';
+import RootStack from "./src/nav/RootStack";
 
 const App = () => {
   // function applyDiscount(price, discount: number = 0.05): number {
@@ -48,7 +50,12 @@ const App = () => {
   return (
     // <HomeScreen />
     // <AsynStr />
-    <UserDetailScreen />
+    // <UserDetailScreen />
+    // <ReportScreen />
+    <View style={{flex: 1}} >
+      <RootStack/>
+
+    </View>
   );
 };
 

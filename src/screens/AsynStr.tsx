@@ -6,6 +6,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+// @ts-ignore
 import React, {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

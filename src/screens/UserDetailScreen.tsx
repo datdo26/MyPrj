@@ -2,23 +2,23 @@ import {
   Dimensions,
   FlatList,
   Image,
-  ImageBackground,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+// @ts-ignore
 import React, {useState} from 'react';
 import Headers from '../component/Headers';
 import styled from 'styled-components/native';
+import { IC_MSG, IC_PEOPLE, IC_SEARCH, IMG_AVT1, IMG_AVT2 } from "../assets";
 
 const width = Dimensions.get('window').width;
 
 const data = [
   {
     id: 1,
-    avt: require('../assets/img_avatar.png'),
+    avt: IMG_AVT1,
     name: 'NGUYỄN HUY TRUNG',
     dob: '15-02-1967',
     email: 'huytrung2290@gmail.com',
@@ -28,7 +28,7 @@ const data = [
   },
   {
     id: 2,
-    avt: require('../assets/img_avatar2.png'),
+    avt: IMG_AVT2,
     name: 'PHÙNG HOÀI NAM',
     dob: '18-01-1979',
     email: 'hoainam123@gmail.com',
@@ -38,7 +38,7 @@ const data = [
   },
   {
     id: 3,
-    avt: require('../assets/img_avatar3.png'),
+    avt: IMG_AVT2,
     name: 'ĐỖ THỊ HÀ THANH',
     dob: '16-01-1973',
     email: 'hathanh1973@gmail.com',
@@ -104,10 +104,10 @@ const UserDetailScreen = () => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image source={require('../assets/ic_phone.png')} />
+            <Image source={IC_PEOPLE} />
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image source={require('../assets/ic_msg.png')} />
+            <Image source={IC_MSG} />
           </TouchableOpacity>
         </View>
       </View>
@@ -120,7 +120,7 @@ const UserDetailScreen = () => {
     <Container>
       <Headers title={'Danh sách Đảng Viên'} />
       <SearchSection>
-        <SearchIcon source={require('../assets/ic_search.png')} />
+        <SearchIcon source={IC_SEARCH} />
         <SearchInput
           placeholder={'Tìm kiếm đảng viên'}
           placeholderTextColor="black"
