@@ -71,18 +71,18 @@ const HomeScreen = () => {
           </WrapContent>
 
         </WrapSection>
-        {/*<View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal:32}} >*/}
-        {/*<TouchableOpacity style={{width: 100, height: 60, backgroundColor:'#0068FF', alignItems:'center', justifyContent:'center', borderRadius: 15}} onPress={()=> navigation.navigate('UserDetail')} >*/}
-        {/*  <Text>*/}
-        {/*    Go to UserDetail*/}
-        {/*  </Text>*/}
-        {/*</TouchableOpacity>*/}
-        {/*<TouchableOpacity style={{width: 100, height: 60, backgroundColor:'#0068FF', alignItems:'center', justifyContent:'center', borderRadius: 15}} onPress={()=> navigation.navigate('Report')} >*/}
-        {/*  <Text>*/}
-        {/*    Go to Report*/}
-        {/*  </Text>*/}
-        {/*</TouchableOpacity>*/}
-        {/*</View>*/}
+        <View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal:32}} >
+        <TouchableOpacity style={{width: 100, height: 60, backgroundColor:'#0068FF', alignItems:'center', justifyContent:'center', borderRadius: 15}} onPress={()=> navigation.navigate('UserDetail')} >
+          <Text>
+            Go to UserDetail
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{width: 100, height: 60, backgroundColor:'#0068FF', alignItems:'center', justifyContent:'center', borderRadius: 15}} onPress={()=> navigation.navigate('Report')} >
+          <Text>
+            Go to Report
+          </Text>
+        </TouchableOpacity>
+        </View>
       </ScrollView>
     </Container>
   );

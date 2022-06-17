@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
+// @ts-ignore
 import React from 'react'
 import { createNativeStackNavigator } from "react-native-screens/native-stack";
 import { NavigationContainer } from "@react-navigation/native";

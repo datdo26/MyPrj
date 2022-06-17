@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 // @ts-ignore
 import React, {useState} from 'react';
-import Headers from '../component/Headers';
 import styled from 'styled-components/native';
 import { IC_MSG, IC_PEOPLE, IC_SEARCH, IMG_AVT1, IMG_AVT2 } from "../assets";
+import Headers from "../component/Headers";
 
 const width = Dimensions.get('window').width;
 
