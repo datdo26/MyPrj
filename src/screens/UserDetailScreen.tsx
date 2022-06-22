@@ -10,8 +10,8 @@ import {
 // @ts-ignore
 import React, {useState} from 'react';
 import styled from 'styled-components/native';
-import { IC_MSG, IC_PEOPLE, IC_SEARCH, IMG_AVT1, IMG_AVT2 } from "../assets";
-import Headers from "../component/Headers";
+import { IC_MSG, IC_PEOPLE, IC_PHONE, IC_SEARCH, IMG_AVT1, IMG_AVT2 } from "../assets";
+import HeaderBack from '../component/HeaderBack';
 
 const width = Dimensions.get('window').width;
 
@@ -104,7 +104,7 @@ const UserDetailScreen = () => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image source={IC_PEOPLE} />
+            <Image source={IC_PHONE} />
           </TouchableOpacity>
           <TouchableOpacity>
             <Image source={IC_MSG} />
@@ -118,7 +118,7 @@ const UserDetailScreen = () => {
 
   return (
     <Container>
-      <Headers title={'Danh sách Đảng Viên'} />
+      <HeaderBack title={'Danh sách Đảng Viên'} />
       <SearchSection>
         <SearchIcon source={IC_SEARCH} />
         <SearchInput

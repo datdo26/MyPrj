@@ -1,88 +1,118 @@
-import { Dimensions, Image, ScrollView, StatusBar, Text, TouchableOpacity, View } from "react-native";
+import { ImageBackground, ScrollView, StyleSheet, Text, View } from "react-native";
 // @ts-ignore
-import React from 'react';
-import Headers from '../component/Headers';
-import styled from 'styled-components/native';
-import { IMG_BANNER, IMG_OVAL } from "../assets";
+import React, { useCallback } from "react";
+import styled from "styled-components/native";
+import { HomeHeader } from "../component/HomeHeader";
+import Banner from "../component/Banner";
+import {
+  IC_CALENDAR, IC_COMUNICATE,
+  IC_DOCUMENT,
+  IC_INFO,
+  IC_LEARN, IC_LOGOUT, IC_MANAGE, IC_NOTE, IC_PROFILEDV, IC_QS,
+  IC_REPORT,
+  IMG_BANNER,
+  IMG_BANNER2,
+  IMG_BANNER3,
+  IMG_CSVN
+} from "../assets";
 import { useNavigation } from "@react-navigation/native";
 
-const width = Dimensions.get('window').width;
+const dataBanner = [
+  { id: "0", img: IMG_BANNER },
+  { id: "1", img: IMG_BANNER2 },
+  { id: "2", img: IMG_BANNER3 }
+];
 
 const HomeScreen = () => {
-
   const navigation = useNavigation<any>()
-
+  const goToNew = useCallback(()=>{
+    navigation.navigate('NewsScreen')
+  },[])
+  const goToReport = useCallback(()=>{
+    navigation.navigate('ReportScreen')
+  },[])
+  const goToUserDetail = useCallback(()=>{
+    navigation.navigate('UserDetailScreen')
+  },[])
   return (
     <Container>
-      <StatusBar hidden={false} />
-      <Headers title="Tin tức sự kiện" />
+      <HomeHeader />
       <ScrollView>
-        <WrapSection>
-          <WrapContent>
-            <ContentHeader>
-              <Image source={IMG_OVAL} />
-              <MainContentHeader>
-                <Title>Nghị quyết TW</Title>
-                <Date>21-08-2019</Date>
-              </MainContentHeader>
-            </ContentHeader>
-            <ContentSection>
-              <BannerSection>
-                <Banner source={IMG_BANNER} />
-              </BannerSection>
-              <MainContent>
-                <View>
-                  <ContentTitle>
-                    Hội nghị cán bộ toàn quốc quán triệt Nghị quyết TW 8 khóa
-                    XII…
-                  </ContentTitle>
-                  <Content>
-                    Ủy viên Bộ Chính trị, Thường trực Ban Bí thư Trần Quốc Vượng
-                    tới dự và phát biểu chỉ đạo Hội nghị…
-                  </Content>
-                </View>
-              </MainContent>
-            </ContentSection>
-          </WrapContent>
+        <Banner dataBanner={dataBanner} autoplay={true} />
+        <ItemSection>
+          <ItemContent>
+            <ButtonItem>
+              <Icon source={IC_INFO} />
+              <ItemText>Thông tin{`\n`}chung</ItemText>
+            </ButtonItem>
+            <ButtonItem onPress={goToNew} >
+              <Icon source={IC_DOCUMENT} />
+              <ItemText>Tin tức{`\n`}sự kiện</ItemText>
+            </ButtonItem>
+            <ButtonItem>
+              <Icon source={IC_CALENDAR} />
+              <ItemText>Lịch{`\n`}công tác{`\n`}Đảng</ItemText>
+            </ButtonItem>
+          </ItemContent>
+        </ItemSection>
 
-          <WrapContent>
-            <ContentHeader>
-              <Image source={IMG_OVAL} />
-              <MainContentHeader>
-                <Title>Điều lệ Đảng</Title>
-                <Date>21-08-2019</Date>
-              </MainContentHeader>
-            </ContentHeader>
-            <ContentSection>
-              <BannerSection>
-                <Banner source={IMG_BANNER} />
-              </BannerSection>
-              <MainContent>
-                <ContentTitle>
-                  Hướng dẫn xác định nguồn kinh phí thực hiện chính sách tinh
-                  giảm...
-                </ContentTitle>
-                <Content>
-                  Ngày 05/06/2019, Bộ Tài chính vừa ban hành Thông tư số
-                  31/2019/TT-BTC hưỡng dẫn việc xác định...
-                </Content>
-              </MainContent>
-            </ContentSection>
-          </WrapContent>
 
-        </WrapSection>
-        <View style={{flexDirection:'row', justifyContent:'space-between', marginHorizontal:32}} >
-        <TouchableOpacity style={{width: 100, height: 60, backgroundColor:'#0068FF', alignItems:'center', justifyContent:'center', borderRadius: 15}} onPress={()=> navigation.navigate('UserDetail')} >
-          <Text>
-            Go to UserDetail
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={{width: 100, height: 60, backgroundColor:'#0068FF', alignItems:'center', justifyContent:'center', borderRadius: 15}} onPress={()=> navigation.navigate('Report')} >
-          <Text>
-            Go to Report
-          </Text>
-        </TouchableOpacity>
-        </View>
+        <ItemSection>
+          <ItemContent>
+            <ButtonItem>
+              <Icon source={IC_LEARN} />
+              <ItemText>Học tập{`\n`}theo{`\n`}Chuyên đề</ItemText>
+            </ButtonItem>
+            <ButtonItem>
+              <Icon source={IC_COMUNICATE} />
+              <ItemText>Liên lạc{`\n`}Nội bộ</ItemText>
+            </ButtonItem>
+            <ButtonItem onPress={goToUserDetail} >
+              <Icon source={IC_PROFILEDV} />
+              <ItemText>Hồ sơ{`\n`}cá nhân{`\n`}Đảng viên</ItemText>
+            </ButtonItem>
+          </ItemContent>
+        </ItemSection>
+
+        <ItemSection>
+          <ItemContent>
+            <ButtonItem>
+              <Icon source={IC_DOCUMENT} />
+              <ItemText>Văn kiện{`\n`}Đảng bộ</ItemText>
+            </ButtonItem>
+            <ButtonItem onPress={goToReport} >
+              <Icon source={IC_REPORT} />
+              <ItemText>Phản hồi{`\n`}Góp ý</ItemText>
+            </ButtonItem>
+            <ButtonItem>
+              <Icon source={IC_MANAGE} />
+              <ItemText>Quản trị{`\n`}công tác{`\n`}Đảng</ItemText>
+            </ButtonItem>
+          </ItemContent>
+        </ItemSection>
+
+        <ItemSection>
+          <ItemContent>
+            <ButtonItem>
+              <Icon source={IC_NOTE} />
+              <ItemText>Ghi chú</ItemText>
+            </ButtonItem>
+            <ButtonItem>
+              <Icon source={IC_MANAGE} />
+              <ItemText>Công việc{`\n`}cá nhân</ItemText>
+            </ButtonItem>
+            <ButtonItem>
+              <Icon source={IC_QS} />
+              <ItemText>Hỏi đáp</ItemText>
+            </ButtonItem>
+          </ItemContent>
+        </ItemSection>
+
+        <Button>
+          <Icon source={IC_LOGOUT} />
+          <LogoutText>Đăng xuất</LogoutText>
+        </Button>
+
       </ScrollView>
     </Container>
   );
@@ -90,86 +120,55 @@ const HomeScreen = () => {
 
 export default HomeScreen;
 
+const styles = StyleSheet.create({});
+
 const Container = styled.View`
   flex: 1;
-  background-color: #fff;
 `;
 
-const WrapSection = styled.View`
-  justify-content: center;
-  align-items: center;
-`;
+const ItemSection = styled.View`
+  flex: 1`;
 
-const WrapContent = styled.View`
-  width: ${width - 20}px;
-  height: 448px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  margin-top: 16px;
-`;
-
-const ContentHeader = styled.View`
+const ItemContent = styled.View`
   flex-direction: row;
-  margin: 10px 12px;
+  justify-content: space-between;
+  align-content: center;
+  margin: 0 16px;
+
 `;
 
-const MainContentHeader = styled.View`
-  margin-left: 16px;
+const Icon = styled.Image`
 `;
 
-const ContentSection = styled.View`
-  background-color: #fff;
-  height: 370px;
-  margin: 0 12px;
-  align-self: center;
-  border-radius: 10px;
+const ButtonItem = styled.TouchableOpacity`
+`;
+const ItemText = styled.Text`
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #293649;
 `;
 
-const BannerSection = styled.View`
-  align-items: center;
-`;
-
-const Banner = styled.Image`
-  width: ${width - 30}px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  margin-top: 2px;
-`;
-
-const MainContent = styled.View`
-  height: 130px;
+const Button = styled.TouchableOpacity`
+  width: 132px;
+  height: 40px;
+  background: #656E7C;
+  border-radius: 4px;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 30px 16px;
 `;
 
-const Title = styled.Text`
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 21px;
-  color: #293649;
-`;
-
-const Date = styled.Text`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 22px;
-  display: flex;
-  align-items: center;
-  color: #4b5563;
-`;
-
-const ContentTitle = styled.Text`
-  font-weight: 500;
-  font-size: 18px;
-  color: #293649;
-  margin: 8px 12px;
-`;
-
-const Content = styled.Text`
+const LogoutText = styled.Text`
   font-weight: 400;
   font-size: 16px;
-  color: #4b5563;
-  margin: 0 12px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  margin-left: 16px;
+
 `;
+
