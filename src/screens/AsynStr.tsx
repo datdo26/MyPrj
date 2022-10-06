@@ -1,88 +1,61 @@
-import {
-  Button,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {Button, SafeAreaView, StyleSheet, Text} from 'react-native';
 // @ts-ignore
 import React, {useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const defaultValue = {
-  firstName: '',
-  lastName: '',
-};
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../store/store';
+import {decrement, increment} from '../store/ducks/counter';
+const axios = require('axios').default;
 
 const AsynStr = () => {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
+  // cách 1:
+  function getJSON() {
+    // To make the function blocking we manually create a Promise.
+    return new Promise(function (resolve) {
+      axios
+        .get('https://tutorialzine.com/misc/files/example.json')
+        .then(function (json) {
+          // The data from the request is available in a .then block
+          // We return the result using resolve.
+          resolve(json);
+        });
+    });
+  }
+  getJSON().then(function (result) {
+    // console.log('result promise', result);
+  });
 
-  const saveValue = () => {
-    if (name.length == 0 || age.length == 0) {
-      alert('fill data');
-    } else {
-      try {
-        const user = {
-          Name: name,
-          Age: age,
-        };
-        AsyncStorage.setItem('UserData', JSON.stringify(user));
-        alert('datasaved');
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
+  // cách 2:
+  // Async/Await approach
 
-  const getValue = () => {
-    try {
-      AsyncStorage.getItem('UserData').then(value => {
-        if (value) {
-          let user = JSON.parse(value);
-          setName(user.Name);
-          setAge(user.Age);
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // The async keyword will automatically create a new Promise and return it.
+  async function getJSONAsync() {
+    // The await keyword saves us from having to write a .then() block.
+    let json = await axios.get(
+      'https://tutorialzine.com/misc/files/example.json',
+    );
 
-  const clearValue = () => {
-    setName(''), setAge('');
-  };
+    // The result of the GET request is available in the json variable.
+    // We return it just like in a regular synchronous function.
+    return json;
+  }
+
+  getJSONAsync().then(function (result) {
+    // Do something with result.
+    console.log('result', result);
+  });
+
+  //--> cách viết async dễ hiểu hơn, ngắn gọn hơn
+
+  let times = 4;
+
+  if (times > 3) {
+    let hello = 'say Hello instead';
+    console.log(hello); // "say Hello instead"
+  }
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View>
-        <Text>Name</Text>
-        <TextInput
-          placeholder={''}
-          value={name}
-          onChangeText={value => setName(value)}
-          style={{
-            height: 42,
-            borderWidth: 1,
-            borderColor: 'black',
-          }}
-        />
-        <Text>Age</Text>
-        <TextInput
-          placeholder={''}
-          value={age}
-          onChangeText={value => setAge(value)}
-          style={{
-            height: 42,
-            borderWidth: 1,
-            borderColor: 'black',
-          }}
-        />
-        <Button title="Clear Data" onPress={() => clearValue()} />
-        <Button title="Save Data" onPress={() => saveValue()} />
-        <Button title="Get Data" onPress={() => getValue()} />
-      </View>
+      <Text>async await</Text>
     </SafeAreaView>
   );
 };
